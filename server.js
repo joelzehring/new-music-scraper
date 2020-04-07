@@ -1,6 +1,19 @@
 var cheerio = require("cheerio");
-var axios = require("axios");
+var axios = require("axios"); 
+var express = require('express');
+var exphbs  = require('express-handlebars');
+ 
+var app = express();
+ 
+app.engine('handlebars', exphbs({
+  defaultLayout: 'home',
+  layoutsDir: __dirname + '/views/layouts/',
+  partialDir: __dirname + '/views/partials/'
+}));
 
+app.set('view engine', 'handlebars');
+ 
+app.get('/', function (req, res) {
 // Make a request via axios to grab the HTML body
 axios.get("https://www.allmusic.com/").then(function(response) {
 
@@ -29,3 +42,8 @@ axios.get("https://www.allmusic.com/").then(function(response) {
   // Log the results
   console.log(results);
 });
+ 
+  res.render('home');
+});
+
+app.listen(3000);
