@@ -34,7 +34,7 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newmusicscraperdb", ;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newmusicscraperdb";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 //mongoose.connect("mongodb://localhost/newmusicsraperdb", { useNewUrlParser: true });
