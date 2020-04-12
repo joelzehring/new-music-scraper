@@ -56,7 +56,6 @@ app.get("/scrape", function(req, res) {
       result.artist = $(this).find(".artist").text().trim();
       result.review = $(this).find(".headline-review").text().split("\n")[1].trim() + " " + $(this).find(".headline-review").text().split("\n")[4].trim();
       result.link = $(this).find(".title a").attr("href");
-      console.log(result);
       
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -68,7 +67,12 @@ app.get("/scrape", function(req, res) {
         });
     });
 
-    res.send("Scrape Complete");
+    res.send(
+      `
+      Scrape Complete
+      <a href="/">View Articles</a>
+      `
+      );
   });
 });
 
