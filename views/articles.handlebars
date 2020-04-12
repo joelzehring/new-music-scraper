@@ -1,0 +1,9 @@
+{{#each articles }}
+  <h4>{{ title }}</h4>
+  <p>{{ artist }}</p>
+  <p>{{ review }}</p>
+  <a href="{{ link }}">{{ link }}</a>
+  <button class="change-saved" data-id="{{ _id }}" data-newsaved="{{ this.saved }}">
+		{{#if saved}}Unsave{{else}}Save{{/if}}
+	</button>
+{{/each}}
