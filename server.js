@@ -105,11 +105,11 @@ app.post("/savestatus/:id", function(req, res) {
   db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: req.body.saved })
     .then(function(dbArticle) {
       console.log(`Changed saved status of ${dbArticle.title} to ${dbArticle.saved}.`);
+      res.json(dbArticle);
     })
     .catch(function(err) {
       res.json(err);
     });
-    
 });
 
 

@@ -11,13 +11,10 @@ $(document).ready(function() {
     // Send the PUT request.
     $.ajax("/savestatus/" + id, {
       type: "POST",
-      data: newSavedState
-    }).then(
-      function() {
-        //console.log("changed saved to" + newSaved);
-        // Reload the page to get the updated list
-        location.reload();
+      data: newSavedState,
+      success: function() {   
+        location.reload();  
       }
-    );
+    });
   });
 });
